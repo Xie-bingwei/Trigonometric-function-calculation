@@ -1,6 +1,3 @@
-//
-// Created by SHUDaXIA on 2023/3/10.
-//
 #include "Trigonometric.h"
 
 double Pow(double x, int n)
@@ -18,11 +15,11 @@ double Pow(double x, int n)
 double sin_180(double direction)
 {
     if(direction > 180)
-        return -1;                                  //  移植的时候改为 rt_error
+        return -1;                                  
 
     double angle[13] = {45, 26.565, 14.036, 7.125, 3.5763,
                         1.7899, 0.8952, 0.4476, 0.22381,
-                        0.1119, 0.0559, 0.028, 0.01399};		// 12 time
+                        0.1119, 0.0559, 0.028, 0.01399};		// 12 times
     double x=1;
     double y=0;
     double k=0.60723;//0.63664;
@@ -60,7 +57,7 @@ double sin_180(double direction)
 double sin_360(double direction)
 {
     if(direction < 180)
-        return -1;                                  //  移植的时候改为 rt_error
+        return -1;                                  
     return -sin_180(direction - 180);
 }
 
@@ -70,7 +67,7 @@ double cos_180(double direction)
         return sin_180(90 - direction);
     else if(direction > 90 && direction <= 180)
         return -sin_180(direction - 90);
-    return -1;                                      //  移植的时候改为 rt_error
+    return -1;                               
 }
 
 double cos_360(double direction)
@@ -78,7 +75,7 @@ double cos_360(double direction)
     if(direction > 180)
         return cos_180(360 - direction);
     else
-        return -1;                                  //  移植的时候改为 rt_error
+        return -1;                                 
 }
 
 double arctan_90(float x, float y, float* r)
@@ -103,7 +100,7 @@ double arctan_90(float x, float y, float* r)
 
     double k = 0.6072529350088814;                          // 旋转矩阵比例因子
     double direction = 0;
-    float convention_tan = 1;                                   //  约定的tan的值(为2^(-i))
+    float convention_tan = 1;                                   //  约定的tan的值(为2^(-i))，这里的初始值为i = 0
 
     for(int i = 0; i < 50; i++)
     {
